@@ -20,7 +20,7 @@ departamento VARCHAR(20),
 PRIMARY KEY(dni));
 
 CREATE TABLE IF NOT EXISTS asignaturas
-(id_asignatura INTEGER NOT NULL AUTO_INCREMENT,
+(id_asignatura INTEGER NOT NULL,
 nombre VARCHAR(20),
 creditos INTEGER(3),
 dni_profesor VARCHAR(9),
@@ -28,7 +28,7 @@ PRIMARY KEY (id_asignatura));
 
 CREATE TABLE IF NOT EXISTS matriculas
 (dni_alumno VARCHAR(9) NOT NULL,
-id_asignatura INTEGER NOT NULL AUTO_INCREMENT,
+id_asignatura INTEGER NOT NULL,
 anyo_matriculacion INTEGER(4),
 precio DOUBLE(4,2),
 PRIMARY KEY (dni_alumno, id_asignatura));
