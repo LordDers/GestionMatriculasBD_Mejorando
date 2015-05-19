@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gestión de matriculaciones</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- <script type="text/javascript" src="functions.js"> </script> -->
+</head>
+
+<body>
+<h1 align="center"> Gestión de matriculaciones </h1>
+
+<br> <br> <br>
+<div align="center">
+	<!--boton mostrar alumnos-->
+	<fieldset>
+			<legend> Mostrar Personas </legend>
+	<form id="mostrar" method="post" action="Mostrar_Personas" style="text-align: center">
+		<input name="gestion" hidden="true" type="text" value="mostrar_personas"/>
+		<input type="submit" id="submit" value="Mostrar personas">
+	</form>
+	</fieldset>
+<br/>
+
+	<!--boton busqueda por DNI-->
+	<fieldset>
+		<legend> Buscar Alumno </legend>
+	<div class="divspoiler">
+		<input type="button" value="Búsqueda por DNI" onclick="
+			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
+				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
+				this.value = 'Ocultar búsqueda'; 
+			} else { 
+				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
+				this.value = 'Búsqueda por DNI'; 
+			}
+		">
+	</div><div><div class="spoiler" style="display: none;">
+		<form name="buscar_alumno" method="post" onsubmit="return validacion_busqueda_alumno()" action="BuscarAlumno"> 
+			<input name="gestion" hidden="true" type="text"  value="buscar_alumno"/> <br>
+			<label> Búsqueda por DNI: </label>
+			<input name="alumno" type="text" placeholder="DNI: 8 numeros y una letra"/>
+			<input type="submit" id="submit" value="Buscar">
+		</form>
+	</div></div>
+	</fieldset>
+	<!--boton cerrado-->
+	<br/>
+
+	<!--boton modificar -->
+	<fieldset>
+		<legend> Modificar datos alumno</legend>
+	<div class="divspoiler">
+		<input type="button" value="Modificar datos alumno" onclick="
+			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
+				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
+				this.value = 'Ocultar mod. alumno'; 
+			} else { 
+				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
+				this.value = 'Modificar datos alumno'; 
+			}
+		">
+	</div><div><div class="spoiler" style="display: none;">
+		<form name="modificar_alumno" method="post" onsubmit="return validacion_modificar_alumno()" action="Modificar"> 
+			<input name="gestion" hidden="true" type="text" value="modificar_alumno"/> <br>
+			<label> DNI alumno: </label>
+				<input name="dniAlumno" type="text" placeholder="8 numeros y una letra" /> <br>
+			<input type="submit" id="submit" value="Modificar">
+		</form>
+	</div></div>
+	</fieldset>
+	<!--boton cerrado-->
+	<br/>
+
+	<!--boton anadir -->
+	<fieldset>
+		<legend> Añadir Persona </legend>
+	<div class="divspoiler">
+		<input type="button" value="Añadir persona" onclick="
+			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
+				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
+				this.value = 'Ocultar persona'; 
+			} else { 
+				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
+				this.value = 'Añadir Persona'; 
+			}
+		">
+	</div><div><div class="spoiler" style="display: none;">
+		<form name="anyadir_persona" method="post" onsubmit="return validacion_anadir_matricula()" action="Anyadir_Persona"> 
+		
+			<!-- <input name="gestion" hidden="true" type="text"  value="anyadir_matricula"/>  -->
+			
+			<br>
+			<label> DNI: </label>
+				<input name="dni" type="text" placeholder="8 numeros 1 letra"/> <br>
+			<label> Nombre: </label>
+				<input name="nombre" type="text" placeholder="nombre del alumno"/> <br>
+			<label> Apellido: </label>
+				<input name="apellido" type="text"  placeholder="apellido del alumno"/>  <br>
+			<label> Persona: </label>
+				<select name="persona" id="persona">
+					<option value="alumno"> Alumno </option>
+					<option value="profesor"> Profesor </option>
+				</select>
+				<input type="button" id="Elegir" value="Elegir" onclick="mostrarFormulario()"> <br/>
+					<div id="alumnohidden" hidden="true">
+						<label> Año de inscripcion: </label>
+							<input name="anyo_inscripcion" type="text"  placeholder="2015"/>  <br>
+						<label> Ciclo: </label>
+							<input name="ciclo" type="text"  placeholder="Desarrollo de aplicaciones web"/>  <br>	
+					</div>
+					
+					<div id="profesorhidden" hidden="true">
+						<label> Titulación: </label>
+							<input name="titulacion" type="text"  placeholder="Sí"/>  <br>
+						<label> Departamento: </label>
+							<input name="departamento" type="text"  placeholder="Informática"/>  <br>
+					</div>
+			<input type="submit" id="submit" value="Añadir">
+		</form>
+	</div></div>
+	</fieldset>
+	<!--boton cerrado-->
+	<br/>
+
+	<!--boton borrar -->
+	<fieldset>
+		<legend> Dar de baja alumno </legend>
+	<div class="divspoiler">
+		<input type="button" value="Dar de baja alumno" onclick="
+			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
+				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
+				this.value = 'Ocultar dar de baja alumno'; 
+			} else { 
+				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
+				this.value = 'Dar de baja alumno'; 
+			}
+		">
+	</div><div><div class="spoiler" style="display: none;">
+		<form name="baja_alumno" method="post" onsubmit="return validacion_baja_alumno()" action="Borrar"> 
+			<input name="gestion" hidden="true" type="text"  value="baja_alumno"/> <br>
+			<label> DNI del alumno a dar de baja: </label> 
+				<input name="dniAlumno" type="text"  placeholder="8 numero y una letras"/>
+			<input type="submit" id="submit" value="Borrar">
+		</form>
+	</div></div>
+	</fieldset>
+	<!--boton cerrado-->
+</div> <!-- align center  -->
+<br/>
+
+<script type="text/javascript">
+function mostrarFormulario(){
+	
+	var seleccion = document.getElementById("persona").value;
+
+	if ( seleccion == "alumno") {
+		document.getElementById('alumnohidden').style.display = 'block';
+		document.getElementById('profesorhidden').style.display = 'none';
+		}
+	else if (seleccion == "profesor") {
+	   document.getElementById('alumnohidden').style.display = 'none';
+	   document.getElementById('profesorhidden').style.display = 'block';
+	}
+
+}
+</script>
+</body>
+</html>
