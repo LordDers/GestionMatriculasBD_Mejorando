@@ -29,4 +29,14 @@
     <servlet-name>Mostrar_Personas</servlet-name>
     <url-pattern>/Mostrar_Personas</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Buscar_Persona</display-name>
+    <servlet-name>Buscar_Persona</servlet-name>
+    <servlet-class>Buscar_Persona</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Buscar_Persona</servlet-name>
+    <url-pattern>/Buscar_Persona</url-pattern>
+  </servlet-mapping>
 </web-app>

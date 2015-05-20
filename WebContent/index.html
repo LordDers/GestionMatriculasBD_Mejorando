@@ -24,7 +24,7 @@
 
 	<!--boton busqueda por DNI-->
 	<fieldset>
-		<legend> Buscar Alumno </legend>
+		<legend> Buscar Persona </legend>
 	<div class="divspoiler">
 		<input type="button" value="Búsqueda por DNI" onclick="
 			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
@@ -36,10 +36,10 @@
 			}
 		">
 	</div><div><div class="spoiler" style="display: none;">
-		<form name="buscar_alumno" method="post" onsubmit="return validacion_busqueda_alumno()" action="BuscarAlumno"> 
-			<input name="gestion" hidden="true" type="text"  value="buscar_alumno"/> <br>
+		<form name="buscar_persona" method="post" onsubmit="return validacion_busqueda_alumno()" action="Buscar_Persona"> 
+			<input name="gestion" hidden="true" type="text"  value="buscar_persona"/> <br>
 			<label> Búsqueda por DNI: </label>
-			<input name="alumno" type="text" placeholder="DNI: 8 numeros y una letra"/>
+			<input name="persona" type="text" placeholder="DNI: 8 numeros y una letra"/>
 			<input type="submit" id="submit" value="Buscar">
 		</form>
 	</div></div>
