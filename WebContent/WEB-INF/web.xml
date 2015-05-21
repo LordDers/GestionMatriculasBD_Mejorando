@@ -59,4 +59,54 @@
     <servlet-name>Modificar_Persona</servlet-name>
     <url-pattern>/Modificar_Persona</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Buscar_Profesor</display-name>
+    <servlet-name>Buscar_Profesor</servlet-name>
+    <servlet-class>Buscar_Profesor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Buscar_Profesor</servlet-name>
+    <url-pattern>/Buscar_Profesor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Borrar_Profesor</display-name>
+    <servlet-name>Borrar_Profesor</servlet-name>
+    <servlet-class>Borrar_Profesor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Borrar_Profesor</servlet-name>
+    <url-pattern>/Borrar_Profesor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Mostrar_Profesores</display-name>
+    <servlet-name>Mostrar_Profesores</servlet-name>
+    <servlet-class>Mostrar_Profesores</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Mostrar_Profesores</servlet-name>
+    <url-pattern>/Mostrar_Profesores</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Anyadir_Profesor</display-name>
+    <servlet-name>Anyadir_Profesor</servlet-name>
+    <servlet-class>Anyadir_Profesor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Anyadir_Profesor</servlet-name>
+    <url-pattern>/Anyadir_Profesor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Modificar_Profesor</display-name>
+    <servlet-name>Modificar_Profesor</servlet-name>
+    <servlet-class>Modificar_Profesor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Modificar_Profesor</servlet-name>
+    <url-pattern>/Modificar_Profesor</url-pattern>
+  </servlet-mapping>
 </web-app>

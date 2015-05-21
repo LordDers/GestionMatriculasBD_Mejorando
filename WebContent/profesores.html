@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gestión de matriculaciones</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- <script type="text/javascript" src="functions.js"> </script> -->
+</head>
+
+<body>
+<h1 align="center"> Gestión de matriculaciones </h1>
+
+<div id="container">
+	<ul id="menu">
+		<li>
+			<a href="personas.html"> Personas </a>
+		</li>
+		<li>
+			<a href="alumnos.html"> Alumnos </a>
+		</li>
+		<li>
+			<a href="profesores.html"> Profesores </a>
+		</li>
+		<li>
+			<a href="#"> Asignaturas </a>
+		</li>
+		<li>
+			<a href="#"> Matriculas </a>
+		</li>
+	</ul>
+</div>
+<br> <br> <br>
+<div align="center">
+	<!--boton mostrar profesores-->
+	<fieldset>
+			<legend> Mostrar profesores </legend>
+	<form id="mostrar" method="post" action="Mostrar_Profesores" style="text-align: center">
+		<input name="gestion" hidden="true" type="text" value="mostrar_profesores"/>
+		<input type="submit" id="submit" value="Mostrar profesores">
+	</form>
+	</fieldset>
+<br/>
+
+	<!--boton busqueda por DNI -->
+	<fieldset>
+		<legend> Buscar profesor </legend>
+	<div class="divspoiler">
+		<input type="button" value="Búsqueda por DNI" onclick="
+			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
+				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
+				this.value = 'Ocultar búsqueda'; 
+			} else { 
+				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
+				this.value = 'Búsqueda por DNI'; 
+			}
+		">
+	</div><div><div class="spoiler" style="display: none;">
+		<form name="buscar_profesor" method="post" onsubmit="return validacion_busqueda_alumno()" action="Buscar_Profesor"> 
+			<input name="gestion" hidden="true" type="text"  value="buscar_profesor"/> <br>
+			<label> Búsqueda por DNI: </label>
+			<input name="profesor" type="text" placeholder="DNI: 8 numeros y una letra"/>
+			<input type="submit" id="submit" value="Buscar">
+		</form>
+	</div></div>
+	</fieldset>
+	<!--boton cerrado-->
+	<br/>
+
+	<!--boton modificar -->
+	<fieldset>
+		<legend> Modificar datos profesor</legend>
+	<div class="divspoiler">
+		<input type="button" value="Modificar datos profesor" onclick="
+			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
+				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
+				this.value = 'Ocultar mod. profesor'; 
+			} else { 
+				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
+				this.value = 'Modificar datos profesor'; 
+			}
+		">
+	</div><div><div class="spoiler" style="display: none;">
+		<form name="modificar_profesor" method="post" onsubmit="return validacion_modificar_alumno()" action="Modificar_Profesor"> 
+			<input name="gestion" hidden="true" type="text" value="modificar_profesor"/> <br>
+			<label> DNI profesor: </label>
+				<input name="dniProfesor" type="text" placeholder="8 numeros y una letra" /> <br>
+			<input type="submit" id="submit" value="Modificar">
+		</form>
+	</div></div>
+	</fieldset>
+	<!--boton cerrado-->
+	<br/>
+
+	<!--boton anadir -->
+	<fieldset>
+		<legend> Añadir profesor </legend>
+	<div class="divspoiler">
+		<input type="button" value="Añadir profesor" onclick="
+			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
+				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
+				this.value = 'Ocultar añadir profesor'; 
+			} else { 
+				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
+				this.value = 'Añadir profesor'; 
+			}
+		">
+	</div><div><div class="spoiler" style="display: none;">
+		<form name="anyadir_profesor" method="post" onsubmit="return validacion_anadir_matricula()" action="Anyadir_Profesor"> 
+			<br>
+			<label> DNI: </label>
+				<input name="dni" type="text" placeholder="8 numeros 1 letra"/> <br>
+			<label> Nombre: </label>
+				<input name="nombre" type="text" placeholder="nombre del profesor"/> <br>
+			<label> Apellido: </label>
+				<input name="apellido" type="text"  placeholder="apellido del profesor"/>  <br>
+			<label> Titulación: </label>
+				<input name="titulacion" type="text"  placeholder="Sí"/>  <br>
+			<label> Departamento: </label>
+				<input name="departamento" type="text"  placeholder="Informática"/>  <br>	
+			<input type="submit" id="submit" value="Añadir">
+		</form>
+	</div></div>
+	</fieldset>
+	<!--boton cerrado-->
+	<br/>
+
+	<!--boton borrar -->
+	<fieldset>
+		<legend> Dar de baja profesor </legend>
+	<div class="divspoiler">
+		<input type="button" value="Dar de baja profesor" onclick="
+			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
+				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
+				this.value = 'Ocultar dar de baja profesor'; 
+			} else { 
+				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
+				this.value = 'Dar de baja profesor'; 
+			}
+		">
+	</div><div><div class="spoiler" style="display: none;">
+		<form name="baja_profesor" method="post" onsubmit="return validacion_baja_alumno()" action="Borrar_Profesor"> 
+			<input name="gestion" hidden="true" type="text"  value="baja_profesor"/> <br>
+			<label> DNI del profesor a dar de baja: </label> 
+				<input name="dniProfesor" type="text"  placeholder="8 numero y una letras"/>
+			<input type="submit" id="submit" value="Borrar">
+		</form>
+	</div></div>
+	</fieldset>
+	<!--boton cerrado-->
+</div> <!-- align center  -->
+<br/>
+</body>
+</html>
