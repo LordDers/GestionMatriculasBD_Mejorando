@@ -39,7 +39,7 @@
     <servlet-name>Borrar_Persona</servlet-name>
     <url-pattern>/Borrar_Persona</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>Buscar_Persona</display-name>
     <servlet-name>Buscar_Persona</servlet-name>
@@ -48,5 +48,15 @@
   <servlet-mapping>
     <servlet-name>Buscar_Persona</servlet-name>
     <url-pattern>/Buscar_Persona</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Modificar_Persona</display-name>
+    <servlet-name>Modificar_Persona</servlet-name>
+    <servlet-class>Modificar_Persona</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Modificar_Persona</servlet-name>
+    <url-pattern>/Modificar_Persona</url-pattern>
   </servlet-mapping>
 </web-app>

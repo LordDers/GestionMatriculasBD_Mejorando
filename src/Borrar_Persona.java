@@ -177,16 +177,6 @@ public class Borrar_Persona extends HttpServlet {
 								response(response, "No se ha borrado el profesor, compruebe el DNI: " + profesorEncontrado.getDni() + ".");
 							}
 						}
-						
-						/*System.out.println("DELETE FROM persona where dni=\""+dni+"\"");
-						sql="DELETE FROM profesores where dni=\""+dni+"\"";
-						int borrar = sentencia.executeUpdate(sql);
-						System.out.println("Valor borrar: " + borrar);
-						if (borrar==1) {
-							response(response, "Se ha borrado la persona");
-						} else {
-							response(response, "No se ha borrado la persona, compruebe el DNI: " + dni + ".");
-						}*/
 						con.close();			    	
 					} catch(ArrayIndexOutOfBoundsException e) {
 						//response(response, "no se encontro la persona");
