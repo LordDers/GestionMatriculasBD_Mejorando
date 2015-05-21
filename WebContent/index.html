@@ -125,22 +125,22 @@
 
 	<!--boton borrar -->
 	<fieldset>
-		<legend> Dar de baja alumno </legend>
+		<legend> Borrar persona </legend>
 	<div class="divspoiler">
-		<input type="button" value="Dar de baja alumno" onclick="
+		<input type="button" value="Borrar persona" onclick="
 			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
 				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
-				this.value = 'Ocultar dar de baja alumno'; 
+				this.value = 'Ocultar borrar persona'; 
 			} else { 
 				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
-				this.value = 'Dar de baja alumno'; 
+				this.value = 'Borrar persona'; 
 			}
 		">
 	</div><div><div class="spoiler" style="display: none;">
-		<form name="baja_alumno" method="post" onsubmit="return validacion_baja_alumno()" action="Borrar"> 
-			<input name="gestion" hidden="true" type="text"  value="baja_alumno"/> <br>
-			<label> DNI del alumno a dar de baja: </label> 
-				<input name="dniAlumno" type="text"  placeholder="8 numero y una letras"/>
+		<form name="borrar_persona" method="post" onsubmit="return validacion_baja_alumno()" action="Borrar_Persona"> 
+			<input name="gestion" hidden="true" type="text"  value="borrar_persona"/> <br>
+			<label> DNI de la persona a borrar: </label> 
+				<input name="dniPersona" type="text"  placeholder="8 numero y una letras"/>
 			<input type="submit" id="submit" value="Borrar">
 		</form>
 	</div></div>
