@@ -94,9 +94,12 @@ public class Modificar_Asignatura extends HttpServlet {
 					asignatura.setNombre(request.getParameter("asignatura"));
 					asignatura.setCreditos(Integer.parseInt(request.getParameter("creditos")));
 					
-					String cambios="";
+					String id = request.getParameter("id");
 					
-					cambios="creditos = "+asignatura.getCreditos()+",";
+					String cambios="";
+					cambios="id_asignatura = "+id+",";
+					cambios+=" nombre = \""+asignatura.getNombre()+"\",";
+					cambios+=" creditos = "+asignatura.getCreditos()+",";
 					cambios+=" dni_profesor = \""+asignatura.getProfesor().getDni()+"\"";
 					
 					try {
