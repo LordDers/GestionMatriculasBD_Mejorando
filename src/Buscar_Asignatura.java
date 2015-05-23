@@ -1,9 +1,11 @@
+
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,9 +16,9 @@ import com.zubiri.matriculas.Asignatura;
 import com.zubiri.matriculas.Profesor;
 
 /**
- * Servlet implementation class Anyadir_Asignatura
+ * Servlet implementation class Buscar_Asignatura
  */
-public class Anyadir_Asignatura extends HttpServlet {
+public class Buscar_Asignatura extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final String USUARIO="root";
@@ -26,7 +28,7 @@ public class Anyadir_Asignatura extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Anyadir_Asignatura() {
+    public Buscar_Asignatura() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,21 +45,14 @@ public class Anyadir_Asignatura extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		System.out.println("Empieza añadiendo");
-		
-		String nombre = request.getParameter("nombre");
-		int creditos = Integer.parseInt(request.getParameter("creditos"));
-		String dni = request.getParameter("dniProfesorAsignatura");
-		String id = request.getParameter("id");
-		
-		System.out.println("Nombre: " + nombre);
-		System.out.println("Créditos: " + creditos);
-		System.out.println("DNI: " + dni);
+		response.setContentType( "text/html; charset=iso-8859-1" );
 		
 		Connection con = null;	
 		Statement sentencia = null;
-		Statement sentenciaSelect = null;
+		
+		System.out.println("Empieza buscando");
+
+		String referencia=request.getParameter("asignatura");
 		
 		try {
 			
@@ -68,62 +63,57 @@ public class Anyadir_Asignatura extends HttpServlet {
 			con = DriverManager.getConnection(URL_BD,USUARIO,CONTRA);
 			
 			sentencia = con.createStatement();
-			sentenciaSelect = con.createStatement();
 			
-			String sqlSelect = "SELECT profesores.dni, persona.nombre, persona.apellido, profesores.titulacion, profesores.departamento FROM persona INNER JOIN profesores ON persona.dni = profesores.dni WHERE persona.dni=\""+dni+"\"";
-			ResultSet buscar = sentenciaSelect.executeQuery(sqlSelect);
+			String sql;		    
+			System.out.println("Referencia: " + referencia);
 			
+			sql="SELECT profesores.dni, persona.nombre AS 'profesor', persona.apellido, profesores.titulacion, profesores.departamento, asignaturas.nombre AS 'asignatura', asignaturas.creditos "+
+					"FROM (persona INNER JOIN profesores ON persona.dni = profesores.dni) "+
+					"INNER JOIN asignaturas ON profesores.dni = asignaturas.dni_profesor "+
+					"WHERE asignaturas.nombre=\""+referencia+"\"";
+			System.out.println("Sql: "+sql);			
+			
+			ResultSet buscar = sentencia.executeQuery(sql);
 			int cont = 0;
-
+			
 			Profesor profesor = new Profesor("", "", "", "", "");
+			Asignatura asignatura = new Asignatura("", 0, profesor);
+
 			while (buscar.next()) {
 				profesor.setDni(buscar.getString("dni"));
-				profesor.setNombre(buscar.getString("nombre"));
+				profesor.setNombre(buscar.getString("profesor"));
 				profesor.setApellido(buscar.getString("apellido"));
 				profesor.setTitulacion(buscar.getString("titulacion"));
 				profesor.setDepartamento(buscar.getString("departamento"));
 				
-				System.out.println("Dni: " + profesor.getDni());
+				asignatura = new Asignatura("", 0, profesor);
+				asignatura.setNombre(buscar.getString("asignatura"));
+				asignatura.setCreditos(buscar.getInt("creditos"));
+				
+				System.out.println("Asignatura: " + asignatura.getNombre());
+				System.out.println("Dni Profesor: " + profesor.getDni());
 				System.out.println("Nombre: " + profesor.getNombre());
 				System.out.println("Apellido: " + profesor.getApellido());
-				System.out.println("Departamento: " + profesor.getDepartamento());				
+				System.out.println("Créditos: " + asignatura.getCreditos());			
 				cont++;
 			}
 			
 			if (cont > 0) {
-				String sql;
-				System.out.println("INSERT INTO asignaturas VALUES ("+
-						id+",\""+
-						nombre+"\","+
-						creditos+",\""+ 
-						dni+"\")");
-				
-				sql = "INSERT INTO asignaturas VALUES ("+
-						id+",\""+
-						nombre+"\","+
-						creditos+",\""+ 
-						dni+"\")";
-				
-				sentencia.executeUpdate(sql);
-
-				Asignatura asignatura = new Asignatura(nombre, creditos, profesor);
-
 				response(response, asignatura);
 			} else {
-				System.out.println("El DNI introducido no es profesor");
-				response(response, "El DNI introducido no es profesor", "relleno");
+				response(response, "No se encontró la asignatura");
 			}
-			con.close();    
-			
+			con.close();
+		
 		} catch(ArrayIndexOutOfBoundsException e) {
-			//response(response, "no se encontro el vehiculo");
+			//response(response, "no se encontro el profesor");
 		} catch(Exception e) {
 			e.printStackTrace();
-		}
+		}		
 	}
-
+	
 	// Respuesta simple
-	private void response(HttpServletResponse response, String msg, String relleno) throws IOException {
+	private void response(HttpServletResponse response, String msg) throws IOException {
 		response.setContentType( "text/html; charset=iso-8859-1" );
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
@@ -133,24 +123,36 @@ public class Anyadir_Asignatura extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");				
 		out.println("<p>" + msg + "</p>");
-		out.println("<a href='profesores.html'> <button> Volver </button> </a>");
+		out.println("<a href='asignaturas.html'> <button> Volver </button> </a>");
 		out.println("</body>");
 		out.println("</html>");
 	}
 	
-	// Muestra asignatura creada
-	private void response(HttpServletResponse response, Asignatura asignatura) throws IOException {
+	// Buscar y Añadir
+	private void response(HttpServletResponse response, Asignatura encontrado) throws IOException {
 		response.setContentType( "text/html; charset=iso-8859-1" );
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<form name=\"buscar_asignatura\" method=\"post\" onsubmit=\"return validacion_busqueda_alumno()\" action=\"Buscar_Asignatura\">");
-				out.println("<label> Asignatura creada: </label>");
-				out.println("<input name=\"nombre\" type=\"text\" value=\""+asignatura.getNombre()+"\" placeholder=\""+asignatura.getNombre()+"\"/> <br>");
-				out.println("Profesor: <input name=\"profe\" type=\"text\" value=\""+asignatura.getProfesor().getNombre()+"\" placeholder=\""+asignatura.getProfesor().getNombre()+"\"/> <br>");
-				//out.println("<input type=\"submit\" id=\"submit\" value=\"Mostrar\">");
-				out.println("</form>");
-		out.println("<a href='asignaturas.html'> <button> Volver </button> </a>");
+			out.println("<title> Buscar Asignatura </title>");
+			out.println("<link rel='stylesheet' type='text/css' href='stylebd.css'>");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<table align=\"center\" border=5><tr>");
+			out.println("<th>Asignatura</th>");
+			out.println("<th>Nombre Profesor</th>");
+			out.println("<th>Apellido Profesor</th>");
+			out.println("<th>Créditos</th>");
+		out.println("</tr><tr>");
+			out.println("<td>" + encontrado.getNombre() + "</td>");
+			out.println("<td>" + encontrado.getProfesor().getNombre() + "</td>");
+			out.println("<td>" + encontrado.getProfesor().getApellido() + "</td>");		
+			out.println("<td>" + encontrado.getCreditos() + "</td>");
+		out.println("</tr><tr>");
+			out.println("<td colspan=6>");
+				out.println("<center> <a href='asignaturas.html'> <button> Volver </button> </a> </center>");
+			out.println("</td>");
+		out.println("</tr></table>");
 		out.println("</body>");
 		out.println("</html>");
 	}

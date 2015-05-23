@@ -179,4 +179,34 @@
     <servlet-name>Mostrar_Asignaturas</servlet-name>
     <url-pattern>/Mostrar_Asignaturas</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Buscar_Asignatura</display-name>
+    <servlet-name>Buscar_Asignatura</servlet-name>
+    <servlet-class>Buscar_Asignatura</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Buscar_Asignatura</servlet-name>
+    <url-pattern>/Buscar_Asignatura</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Borrar_Asignatura</display-name>
+    <servlet-name>Borrar_Asignatura</servlet-name>
+    <servlet-class>Borrar_Asignatura</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Borrar_Asignatura</servlet-name>
+    <url-pattern>/Borrar_Asignatura</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Modificar_Asignatura</display-name>
+    <servlet-name>Modificar_Asignatura</servlet-name>
+    <servlet-class>Modificar_Asignatura</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Modificar_Asignatura</servlet-name>
+    <url-pattern>/Modificar_Asignatura</url-pattern>
+  </servlet-mapping>
 </web-app>
