@@ -242,7 +242,7 @@ public class Modificar_Persona extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");				
 		out.println("<p>" + msg + "</p>");
-		out.println("<a href='index.html'> <button> Volver </button> </a>");
+		out.println("<a href='personas.html'> <button> Volver </button> </a>");
 		out.println("</body>");
 		out.println("</html>");
 	}

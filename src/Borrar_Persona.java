@@ -204,7 +204,7 @@ public class Borrar_Persona extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");				
 		out.println("<p>" + msg + "</p>");
-		out.println("<a href='index.html'> <button> Volver </button> </a>");
+		out.println("<a href='personas.html'> <button> Volver </button> </a>");
 		out.println("</body>");
 		out.println("</html>");
 	}
@@ -226,7 +226,7 @@ public class Borrar_Persona extends HttpServlet {
 			out.println("<input name=\"confirmacion\" hidden=\"true\" type=\"text\"  value='true'></input>");
 			out.println("<p> <input type='submit' id='submit' value='Borrar'> </p>");
 		out.println("</form>");
-		out.println("<a href='index.html'> <button> Volver </button> </a>");
+		out.println("<a href='personas.html'> <button> Volver </button> </a>");
 		out.println("</body>");
 		out.println("</html>");
 	}

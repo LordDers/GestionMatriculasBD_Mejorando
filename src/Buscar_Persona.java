@@ -1,6 +1,5 @@
-
-
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -80,10 +79,8 @@ public class Buscar_Persona extends HttpServlet {
 				dni = buscar.getString("dni");
 				nombre = buscar.getString("nombre");
 				apellido = buscar.getString("apellido");
-				/*System.out.println("Dni: "+dni);
-				System.out.println("Nombre: "+nombre);*/
 				cont++;
-			}			
+			}
 			
 			if (cont > 0) {
 				//response(response, encontrado);
@@ -106,6 +103,8 @@ public class Buscar_Persona extends HttpServlet {
 					System.out.println("Nombre: " + alumnoEncontrado.getNombre());
 					System.out.println("Apellido: " + alumnoEncontrado.getApellido());
 					System.out.println("Ciclo: " + alumnoEncontrado.getCiclo());
+					responseAlumno(response, alumnoEncontrado);
+					//response(response,"No se encontró el alumno");
 				}
 				
 				sql="SELECT persona.dni, persona.nombre, persona.apellido, profesores.titulacion, profesores.departamento FROM persona INNER JOIN profesores ON persona.dni = profesores.dni WHERE persona.dni=\""+referencia+"\"";
@@ -126,17 +125,97 @@ public class Buscar_Persona extends HttpServlet {
 					System.out.println("Nombre: " + profesorEncontrado.getNombre());
 					System.out.println("Apellido: " + profesorEncontrado.getApellido());
 					System.out.println("Departamento: " + profesorEncontrado.getDepartamento());
+					
+					responseProfesor(response, profesorEncontrado);
 				}
 			} else {
-				//response(response, "No se encontró el vehículo");
+				response(response, "No se encontró la persona");
 				System.out.println("No se encontró la persona");
 			}
 			con.close();
 		
 		} catch(ArrayIndexOutOfBoundsException e) {
-			//response(response, "no se encontro el vehiculo");
+			//response(response, "no se encontro la persona");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	// Respuesta simple
+	private void response(HttpServletResponse response, String msg) throws IOException {
+		response.setContentType( "text/html; charset=iso-8859-1" );
+		PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<head>");
+			out.println("<title> Respuesta </title>");
+			out.println("<link rel='stylesheet' type='text/css' href='stylebd.css'>");
+		out.println("</head>");
+		out.println("<body>");				
+		out.println("<p>" + msg + "</p>");
+		out.println("<a href='personas.html'> <button> Volver </button> </a>");
+		out.println("</body>");
+		out.println("</html>");
+	}
+		
+	// Alumno
+	private void responseAlumno(HttpServletResponse response, Alumno encontrado) throws IOException {
+		response.setContentType( "text/html; charset=iso-8859-1" );
+		PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<head>");
+			out.println("<title> Buscar Alumno </title>");
+			out.println("<link rel='stylesheet' type='text/css' href='stylebd.css'>");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<table align=\"center\" border=5><tr>");
+			out.println("<th>DNI</th>");
+			out.println("<th>Nombre</th>");
+			out.println("<th>Apellido</th>");
+			out.println("<th>Año de Inscripción</th>");
+			out.println("<th>Ciclo</th>");
+		out.println("</tr><tr>");
+			out.println("<td>" + encontrado.getDni() + "</td>");
+			out.println("<td>" + encontrado.getNombre() + "</td>");
+			out.println("<td>" + encontrado.getApellido() + "</td>");		
+			out.println("<td>" + encontrado.getAnyoInscripcion() + "</td>");		
+			out.println("<td>" + encontrado.getCiclo() + "</td>");
+		out.println("</tr><tr>");
+			out.println("<td colspan=6>");
+				out.println("<center> <a href='personas.html'> <button> Volver </button> </a> </center>");
+			out.println("</td>");
+		out.println("</tr></table>");
+		out.println("</body>");
+		out.println("</html>");
+	}
+	
+	// Profesor
+	private void responseProfesor(HttpServletResponse response, Profesor encontrado) throws IOException {
+		response.setContentType( "text/html; charset=iso-8859-1" );
+		PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<head>");
+			out.println("<title> Buscar Profesor </title>");
+			out.println("<link rel='stylesheet' type='text/css' href='stylebd.css'>");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<table align=\"center\" border=5><tr>");
+			out.println("<th>DNI</th>");
+			out.println("<th>Nombre</th>");
+			out.println("<th>Apellido</th>");
+			out.println("<th>Titulación</th>");
+			out.println("<th>Departamento</th>");
+		out.println("</tr><tr>");
+			out.println("<td>" + encontrado.getDni() + "</td>");
+			out.println("<td>" + encontrado.getNombre() + "</td>");
+			out.println("<td>" + encontrado.getApellido() + "</td>");		
+			out.println("<td>" + encontrado.getTitulacion() + "</td>");		
+			out.println("<td>" + encontrado.getDepartamento() + "</td>");
+		out.println("</tr><tr>");
+			out.println("<td colspan=6>");
+				out.println("<center> <a href='personas.html'> <button> Volver </button> </a> </center>");
+			out.println("</td>");
+		out.println("</tr></table>");
+		out.println("</body>");
+		out.println("</html>");
 	}
 }

@@ -60,8 +60,7 @@ public class Anyadir_Persona extends HttpServlet {
 			String nombre = request.getParameter("nombre");
 			String apellido = request.getParameter("apellido");
 			String persona = request.getParameter("persona");
-			/*int anyo = Integer.parseInt(request.getParameter("anyo_inscripcion"));
-			String ciclo = request.getParameter("ciclo");*/
+			
 			System.out.println("DNI: " + dni);
 			System.out.println("Nombre: " + nombre);
 			System.out.println("Apellido: " + apellido);
@@ -101,7 +100,13 @@ public class Anyadir_Persona extends HttpServlet {
 						nuevoAlumno.getAnyoInscripcion()+",\""+
 						nuevoAlumno.getCiclo()+"\")";
 				
-				sentencia.executeUpdate(sql);
+				int crearAlumno = sentencia.executeUpdate(sql);
+				
+				if (crearAlumno == 1) {
+					responseAlumno(response, nuevoAlumno.getDni());
+				} else {
+					response(response,"Error al crear el alumno", "relleno");
+				}
 				
 			} else if (persona.equals(profesor)) {
 				String titulacion = request.getParameter("titulacion");
@@ -120,8 +125,14 @@ public class Anyadir_Persona extends HttpServlet {
 						nuevoProfesor.getDni()+"\",\""+
 						nuevoProfesor.getTitulacion()+"\",\""+
 						nuevoProfesor.getDepartamento()+"\")";
+
+				int crearProfesor = sentencia.executeUpdate(sql);
 				
-				sentencia.executeUpdate(sql);
+				if (crearProfesor == 1) {
+					responseProfesor(response, nuevoProfesor.getDni());
+				} else {
+					response(response,"Error al crear el profesor", "relleno");
+				}
 			}
 		} catch(ArrayIndexOutOfBoundsException e) {
 			//response(response, "no se encontro el vehiculo");
@@ -141,24 +152,42 @@ public class Anyadir_Persona extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");				
 		out.println("<p>" + msg + "</p>");
-		out.println("<a href='alumnos.html'> <button> Volver </button> </a>");
+		out.println("<a href='personas.html'> <button> Volver </button> </a>");
 		out.println("</body>");
 		out.println("</html>");
 	}
 	
-	//muestra de alumno matriculado
-	private void response(HttpServletResponse response, String dni) throws IOException {
+	//Muestra alumno creado
+	private void responseAlumno(HttpServletResponse response, String dni) throws IOException {
 		response.setContentType( "text/html; charset=iso-8859-1" );
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<form name=\"buscar_alumno\" method=\"post\" onsubmit=\"return validacion_busqueda_alumno()\" action=\"BuscarAlumno\">");
-				out.println("<label> Alumno matriculado: </label>");
-				out.println("<input name=\"alumno\" type=\"text\" value=\""+dni+"\" placeholder=\""+dni+"\"/>");
-				out.println("<input type=\"submit\" id=\"submit\" value=\"mostrar\">");
+		out.println("<form name=\"buscar_alumno\" method=\"post\" onsubmit=\"return validacion_busqueda_alumno()\" action=\"Buscar_Alumno\">");
+				out.println("<label> Alumno creado: </label>");
+				out.println("<input name='alumno' type='text' value='" + dni + "' hidden='true'/> <br>");
+				out.println("<input name=\"alumno\" type=\"text\" value=\""+dni+"\" placeholder=\""+dni+"\" disabled/>");
+				out.println("<input type=\"submit\" id=\"submit\" value=\"Mostrar\">");
 				out.println("</form>");
-		out.println("<a href='alumnos.html'> <button> Volver </button> </a>");
+		out.println("<a href='personas.html'> <button> Volver </button> </a>");
 		out.println("</body>");
 		out.println("</html>");
 	}
+	
+	// Muestra profesor creado
+		private void responseProfesor(HttpServletResponse response, String dni) throws IOException {
+			response.setContentType( "text/html; charset=iso-8859-1" );
+			PrintWriter out = response.getWriter();
+			out.println("<html>");
+			out.println("<head>");
+			out.println("<form name=\"buscar_profesor\" method=\"post\" onsubmit=\"return validacion_busqueda_alumno()\" action=\"Buscar_Profesor\">");
+					out.println("<label> Profesor creado: </label>");
+					out.println("<input name='profesor' type='text' value='" + dni + "' hidden='true'/> <br>");
+					out.println("<input name=\"profesor\" type=\"text\" value=\""+dni+"\" placeholder=\""+dni+"\" disabled/>");
+					out.println("<input type=\"submit\" id=\"submit\" value=\"Mostrar\">");
+					out.println("</form>");
+			out.println("<a href='personas.html'> <button> Volver </button> </a>");
+			out.println("</body>");
+			out.println("</html>");
+		}
 }

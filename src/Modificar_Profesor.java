@@ -117,10 +117,10 @@ public class Modificar_Profesor extends HttpServlet {
 						System.out.println("Valor actualizar: " + updatePersona);
 						if (updatePersona == 1) {
 							if (updateProfesor == 1) {
-								response(response, "Se ha modificado el alumno con DNI " + profesor.getDni() + ".<br>" + cambiosPersona);
+								response(response, "Se ha modificado el profesor con DNI " + profesor.getDni() + ".<br>" + cambiosPersona);
 							}
 						} else {
-							response(response, "¡Error! No se ha modificado el alumno, compruebe el DNI: " + profesor.getDni());
+							response(response, "¡Error! No se ha modificado el profesor, compruebe el DNI: " + profesor.getDni());
 						}
 						con.close();
 					} catch(ArrayIndexOutOfBoundsException e) {

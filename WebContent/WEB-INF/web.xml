@@ -109,4 +109,54 @@
     <servlet-name>Modificar_Profesor</servlet-name>
     <url-pattern>/Modificar_Profesor</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Mostrar_Alumnos</display-name>
+    <servlet-name>Mostrar_Alumnos</servlet-name>
+    <servlet-class>Mostrar_Alumnos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Mostrar_Alumnos</servlet-name>
+    <url-pattern>/Mostrar_Alumnos</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Buscar_Alumno</display-name>
+    <servlet-name>Buscar_Alumno</servlet-name>
+    <servlet-class>Buscar_Alumno</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Buscar_Alumno</servlet-name>
+    <url-pattern>/Buscar_Alumno</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Anyadir_Alumno</display-name>
+    <servlet-name>Anyadir_Alumno</servlet-name>
+    <servlet-class>Anyadir_Alumno</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Anyadir_Alumno</servlet-name>
+    <url-pattern>/Anyadir_Alumno</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Borrar_Alumno</display-name>
+    <servlet-name>Borrar_Alumno</servlet-name>
+    <servlet-class>Borrar_Alumno</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Borrar_Alumno</servlet-name>
+    <url-pattern>/Borrar_Alumno</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Modificar_Alumno</display-name>
+    <servlet-name>Modificar_Alumno</servlet-name>
+    <servlet-class>Modificar_Alumno</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Modificar_Alumno</servlet-name>
+    <url-pattern>/Modificar_Alumno</url-pattern>
+  </servlet-mapping>
 </web-app>

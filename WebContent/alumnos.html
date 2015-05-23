@@ -34,7 +34,7 @@
 	<!--boton mostrar alumnos-->
 	<fieldset>
 			<legend> Mostrar alumnos </legend>
-	<form id="mostrar" method="post" action="MostrarAlumnos" style="text-align: center">
+	<form id="mostrar" method="post" action="Mostrar_Alumnos" style="text-align: center">
 		<input name="gestion" hidden="true" type="text" value="mostrar_alumnos"/>
 		<input type="submit" id="submit" value="Mostrar alumnos">
 	</form>
@@ -55,7 +55,7 @@
 			}
 		">
 	</div><div><div class="spoiler" style="display: none;">
-		<form name="buscar_alumno" method="post" onsubmit="return validacion_busqueda_alumno()" action="BuscarAlumno"> 
+		<form name="buscar_alumno" method="post" onsubmit="return validacion_busqueda_alumno()" action="Buscar_Alumno"> 
 			<input name="gestion" hidden="true" type="text"  value="buscar_alumno"/> <br>
 			<label> Búsqueda por DNI: </label>
 			<input name="alumno" type="text" placeholder="DNI: 8 numeros y una letra"/>
@@ -80,7 +80,7 @@
 			}
 		">
 	</div><div><div class="spoiler" style="display: none;">
-		<form name="modificar_alumno" method="post" onsubmit="return validacion_modificar_alumno()" action="Modificar"> 
+		<form name="modificar_alumno" method="post" onsubmit="return validacion_modificar_alumno()" action="Modificar_Alumno"> 
 			<input name="gestion" hidden="true" type="text" value="modificar_alumno"/> <br>
 			<label> DNI alumno: </label>
 				<input name="dniAlumno" type="text" placeholder="8 numeros y una letra" /> <br>
@@ -105,10 +105,7 @@
 			}
 		">
 	</div><div><div class="spoiler" style="display: none;">
-		<form name="anyadir_matricula" method="post" onsubmit="return validacion_anadir_matricula()" action="Insertar"> 
-		
-			<!-- <input name="gestion" hidden="true" type="text"  value="anyadir_matricula"/>  -->
-			
+		<form name="anyadir_matricula" method="post" onsubmit="return validacion_anadir_matricula()" action="Anyadir_Alumno">		
 			<br>
 			<label> DNI: </label>
 				<input name="dni" type="text" placeholder="8 numeros 1 letra"/> <br>
@@ -141,9 +138,9 @@
 			}
 		">
 	</div><div><div class="spoiler" style="display: none;">
-		<form name="baja_alumno" method="post" onsubmit="return validacion_baja_alumno()" action="Borrar"> 
+		<form name="baja_alumno" method="post" onsubmit="return validacion_baja_alumno()" action="Borrar_Alumno"> 
 			<input name="gestion" hidden="true" type="text"  value="baja_alumno"/> <br>
-			<label> DNI del alumno a dar de baja: </label> 
+			<label> DNI del alumno a borrar: </label> 
 				<input name="dniAlumno" type="text"  placeholder="8 numero y una letras"/>
 			<input type="submit" id="submit" value="Borrar">
 		</form>
