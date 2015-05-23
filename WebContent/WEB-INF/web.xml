@@ -159,4 +159,24 @@
     <servlet-name>Modificar_Alumno</servlet-name>
     <url-pattern>/Modificar_Alumno</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Anyadir_Asignatura</display-name>
+    <servlet-name>Anyadir_Asignatura</servlet-name>
+    <servlet-class>Anyadir_Asignatura</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Anyadir_Asignatura</servlet-name>
+    <url-pattern>/Anyadir_Asignatura</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Mostrar_Asignaturas</display-name>
+    <servlet-name>Mostrar_Asignaturas</servlet-name>
+    <servlet-class>Mostrar_Asignaturas</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Mostrar_Asignaturas</servlet-name>
+    <url-pattern>/Mostrar_Asignaturas</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -33,10 +33,10 @@
 <div align="center">
 	<!--boton mostrar alumnos-->
 	<fieldset>
-			<legend> Mostrar alumnos </legend>
-	<form id="mostrar" method="post" action="Mostrar_Alumnos" style="text-align: center">
-		<input name="gestion" hidden="true" type="text" value="mostrar_alumnos"/>
-		<input type="submit" id="submit" value="Mostrar alumnos">
+			<legend> Mostrar asignaturas </legend>
+	<form id="mostrar" method="post" action="Mostrar_Asignaturas" style="text-align: center">
+		<input name="gestion" hidden="true" type="text" value="mostrar_asignaturas"/>
+		<input type="submit" id="submit" value="Mostrar asignaturas">
 	</form>
 	</fieldset>
 <br/>
@@ -93,30 +93,28 @@
 
 	<!--boton anadir -->
 	<fieldset>
-		<legend> Añadir alumno </legend>
+		<legend> Añadir asignatura </legend>
 	<div class="divspoiler">
-		<input type="button" value="Añadir alumno" onclick="
+		<input type="button" value="Añadir asignatura" onclick="
 			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
 				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
-				this.value = 'Ocultar añadir alumno'; 
+				this.value = 'Ocultar añadir asignatura'; 
 			} else { 
 				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
-				this.value = 'Añadir alumno'; 
+				this.value = 'Añadir asignatura'; 
 			}
 		">
 	</div><div><div class="spoiler" style="display: none;">
-		<form name="anyadir_matricula" method="post" onsubmit="return validacion_anadir_matricula()" action="Anyadir_Alumno">		
+		<form name="anyadir_matricula" method="post" onsubmit="return validacion_anadir_matricula()" action="Anyadir_Asignatura">		
 			<br>
-			<label> DNI: </label>
-				<input name="dni" type="text" placeholder="8 numeros 1 letra"/> <br>
 			<label> Nombre: </label>
-				<input name="nombre" type="text" placeholder="nombre del alumno"/> <br>
-			<label> Apellido: </label>
-				<input name="apellido" type="text"  placeholder="apellido del alumno"/>  <br>
-			<label> Año de inscripcion: </label>
-				<input name="anyo_inscripcion" type="text"  placeholder="2015"/>  <br>
-			<label> Ciclo: </label>
-				<input name="ciclo" type="text"  placeholder="Desarrollo de aplicaciones web"/>  <br>	
+				<input name="nombre" type="text" placeholder="nombre de la asignatura"/> <br>
+			<label> Id: </label>
+				<input name="id" type="text" placeholder="id de la asignatura"/> <br>
+			<label> Créditos: </label>
+				<input name="creditos" type="text"  placeholder="4"/>  <br>
+			<label> DNI del profesor de la asignatura: </label>
+				<input name="dniProfesorAsignatura" type="text"  placeholder="8 numeros 1 letra"/>  <br>	
 			<input type="submit" id="submit" value="Añadir">
 		</form>
 	</div></div>
