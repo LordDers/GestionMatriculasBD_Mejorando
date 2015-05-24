@@ -112,7 +112,7 @@ public class Modificar_Asignatura extends HttpServlet {
 						System.out.println("UPDATE asignaturas SET "+cambios+" WHERE nombre=\""+asignatura.getNombre()+"\"");
 						
 						String sqlUpdate;
-						sqlUpdate="UPDATE persona SET "+cambios+" WHERE nombre=\""+asignatura.getNombre()+"\"";
+						sqlUpdate="UPDATE asignaturas SET "+cambios+" WHERE nombre=\""+asignatura.getNombre()+"\"";
 
 						int update = sentenciaUpdate.executeUpdate(sqlUpdate);
 						
