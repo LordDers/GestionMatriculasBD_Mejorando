@@ -31,34 +31,34 @@
 </div>
 <br> <br> <br>
 <div align="center">
-	<!--boton mostrar alumnos-->
+	<!--boton mostrar -->
 	<fieldset>
-			<legend> Mostrar alumnos </legend>
-	<form id="mostrar" method="post" action="Mostrar_Alumnos" style="text-align: center">
-		<input name="gestion" hidden="true" type="text" value="mostrar_alumnos"/>
-		<input type="submit" id="submit" value="Mostrar alumnos">
+			<legend> Mostrar matriculas </legend>
+	<form id="mostrar" method="post" action="Mostrar_Matriculas" style="text-align: center">
+		<input name="gestion" hidden="true" type="text" value="mostrar_matriculas"/>
+		<input type="submit" id="submit" value="Mostrar matriculas">
 	</form>
 	</fieldset>
 <br/>
 
-	<!--boton busqueda por DNI-->
+	<!--boton busqueda por DNI -->
 	<fieldset>
-		<legend> Buscar Alumno </legend>
+		<legend> Buscar alumno matriculado </legend>
 	<div class="divspoiler">
-		<input type="button" value="Búsqueda por DNI" onclick="
+		<input type="button" value="Buscar alumno matriculado " onclick="
 			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
 				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
 				this.value = 'Ocultar búsqueda'; 
 			} else { 
 				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
-				this.value = 'Búsqueda por DNI'; 
+				this.value = 'Buscar alumno matriculado '; 
 			}
 		">
 	</div><div><div class="spoiler" style="display: none;">
-		<form name="buscar_alumno" method="post" onsubmit="return validacion_busqueda_alumno()" action="Buscar_Alumno"> 
-			<input name="gestion" hidden="true" type="text"  value="buscar_alumno"/> <br>
+		<form name="buscar_matricula" method="post" onsubmit="return validacion_busqueda_alumno()" action="Buscar_Matricula"> 
+			<input name="gestion" hidden="true" type="text"  value="buscar_matricula"/> <br>
 			<label> Búsqueda por DNI: </label>
-			<input name="alumno" type="text" placeholder="DNI: 8 numeros y una letra"/>
+			<input name="dniMatricula" type="text" placeholder="DNI: 8 numeros y una letra"/>
 			<input type="submit" id="submit" value="Buscar">
 		</form>
 	</div></div>
@@ -68,22 +68,22 @@
 
 	<!--boton modificar -->
 	<fieldset>
-		<legend> Modificar datos alumno </legend>
+		<legend> Modificar datos profesor</legend>
 	<div class="divspoiler">
-		<input type="button" value="Modificar datos alumno" onclick="
+		<input type="button" value="Modificar datos profesor" onclick="
 			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
 				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
-				this.value = 'Ocultar mod. alumno'; 
+				this.value = 'Ocultar mod. profesor'; 
 			} else { 
 				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
-				this.value = 'Modificar datos alumno'; 
+				this.value = 'Modificar datos profesor'; 
 			}
 		">
 	</div><div><div class="spoiler" style="display: none;">
-		<form name="modificar_alumno" method="post" onsubmit="return validacion_modificar_alumno()" action="Modificar_Alumno"> 
-			<input name="gestion" hidden="true" type="text" value="modificar_alumno"/> <br>
-			<label> DNI alumno: </label>
-				<input name="dniAlumno" type="text" placeholder="8 numeros y una letra" /> <br>
+		<form name="modificar_profesor" method="post" onsubmit="return validacion_modificar_alumno()" action="Modificar_Profesor"> 
+			<input name="gestion" hidden="true" type="text" value="modificar_profesor"/> <br>
+			<label> DNI profesor: </label>
+				<input name="dniProfesor" type="text" placeholder="8 numeros y una letra" /> <br>
 			<input type="submit" id="submit" value="Modificar">
 		</form>
 	</div></div>
@@ -93,31 +93,29 @@
 
 	<!--boton anadir -->
 	<fieldset>
-		<legend> Añadir alumno </legend>
+		<legend> Matricular alumno </legend>
 	<div class="divspoiler">
-		<input type="button" value="Añadir alumno" onclick="
+		<input type="button" value="Matricular alumno" onclick="
 			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
 				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
-				this.value = 'Ocultar añadir alumno'; 
+				this.value = 'Ocultar matricular alumno'; 
 			} else { 
 				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
-				this.value = 'Añadir alumno'; 
+				this.value = 'Matricular alumno'; 
 			}
 		">
 	</div><div><div class="spoiler" style="display: none;">
-		<form name="anyadir_matricula" method="post" onsubmit="return validacion_anadir_matricula()" action="Anyadir_Alumno">		
+		<form name="anyadir_profesor" method="post" onsubmit="return validacion_anadir_matricula()" action="Anyadir_Matricula"> 
 			<br>
 			<label> DNI: </label>
-				<input name="dni" type="text" placeholder="8 numeros 1 letra"/> <br>
-			<label> Nombre: </label>
-				<input name="nombre" type="text" placeholder="nombre del alumno"/> <br>
-			<label> Apellido: </label>
-				<input name="apellido" type="text"  placeholder="apellido del alumno"/>  <br>
-			<label> Año de inscripcion: </label>
-				<input name="anyo_inscripcion" type="text"  placeholder="2015"/>  <br>
-			<label> Ciclo: </label>
-				<input name="ciclo" type="text"  placeholder="Desarrollo de aplicaciones web"/>  <br>	
-			<input type="submit" id="submit" value="Añadir">
+				<input name="dniAlumno" type="text" placeholder="8 numeros 1 letra"/> <br>
+			<label> Asignatura: </label>
+				<input name="asignatura" type="text" placeholder="Nombre de la asignatura"/> <br>
+			<label> Año de matriculación: </label>
+				<input name="anyo_matricula" type="text"  placeholder="2015"/>  <br>
+			<label> Precio: </label>
+				<input name="precio" type="text"  placeholder="30"/>  <br>
+			<input type="submit" id="submit" value="Matricular">
 		</form>
 	</div></div>
 	</fieldset>
@@ -126,22 +124,22 @@
 
 	<!--boton borrar -->
 	<fieldset>
-		<legend> Borrar alumno </legend>
+		<legend> Dar de baja profesor </legend>
 	<div class="divspoiler">
-		<input type="button" value="Borrar alumno" onclick="
+		<input type="button" value="Dar de baja profesor" onclick="
 			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
 				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
-				this.value = 'Ocultar borrar alumno'; 
+				this.value = 'Ocultar dar de baja profesor'; 
 			} else { 
 				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
-				this.value = 'Borrar alumno'; 
+				this.value = 'Dar de baja profesor'; 
 			}
 		">
 	</div><div><div class="spoiler" style="display: none;">
-		<form name="baja_alumno" method="post" onsubmit="return validacion_baja_alumno()" action="Borrar_Alumno"> 
-			<input name="gestion" hidden="true" type="text"  value="baja_alumno"/> <br>
-			<label> DNI del alumno a borrar: </label> 
-				<input name="dniAlumno" type="text"  placeholder="8 numero y una letras"/>
+		<form name="baja_profesor" method="post" onsubmit="return validacion_baja_alumno()" action="Borrar_Profesor"> 
+			<input name="gestion" hidden="true" type="text"  value="baja_profesor"/> <br>
+			<label> DNI del profesor a dar de baja: </label> 
+				<input name="dniProfesor" type="text"  placeholder="8 numero y una letras"/>
 			<input type="submit" id="submit" value="Borrar">
 		</form>
 	</div></div>

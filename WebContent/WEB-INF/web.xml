@@ -209,4 +209,34 @@
     <servlet-name>Modificar_Asignatura</servlet-name>
     <url-pattern>/Modificar_Asignatura</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Anyadir_Matricula</display-name>
+    <servlet-name>Anyadir_Matricula</servlet-name>
+    <servlet-class>Anyadir_Matricula</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Anyadir_Matricula</servlet-name>
+    <url-pattern>/Anyadir_Matricula</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Mostrar_Matriculas</display-name>
+    <servlet-name>Mostrar_Matriculas</servlet-name>
+    <servlet-class>Mostrar_Matriculas</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Mostrar_Matriculas</servlet-name>
+    <url-pattern>/Mostrar_Matriculas</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Buscar_Matricula</display-name>
+    <servlet-name>Buscar_Matricula</servlet-name>
+    <servlet-class>Buscar_Matricula</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Buscar_Matricula</servlet-name>
+    <url-pattern>/Buscar_Matricula</url-pattern>
+  </servlet-mapping>
 </web-app>
