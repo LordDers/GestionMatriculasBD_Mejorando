@@ -68,22 +68,24 @@
 
 	<!--boton modificar -->
 	<fieldset>
-		<legend> Modificar datos profesor</legend>
+		<legend> Modificar matricula</legend>
 	<div class="divspoiler">
-		<input type="button" value="Modificar datos profesor" onclick="
+		<input type="button" value="Modificar datos matricula" onclick="
 			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
 				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
-				this.value = 'Ocultar mod. profesor'; 
+				this.value = 'Ocultar mod. matricula'; 
 			} else { 
 				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
-				this.value = 'Modificar datos profesor'; 
+				this.value = 'Modificar matricula'; 
 			}
 		">
 	</div><div><div class="spoiler" style="display: none;">
-		<form name="modificar_profesor" method="post" onsubmit="return validacion_modificar_alumno()" action="Modificar_Profesor"> 
-			<input name="gestion" hidden="true" type="text" value="modificar_profesor"/> <br>
-			<label> DNI profesor: </label>
-				<input name="dniProfesor" type="text" placeholder="8 numeros y una letra" /> <br>
+		<form name="modificar_matricula" method="post" onsubmit="return validacion_modificar_alumno()" action="Modificar_Matricula"> 
+			<input name="gestion" hidden="true" type="text" value="modificar_matricula"/> <br>
+			<label> DNI: </label>
+				<input name="dniMatricula" type="text" placeholder="8 numeros y una letra" /> <br>
+			<label> Asignatura: </label>
+				<input name="asignatura" type="text" placeholder="Nombre de la asignatura" /> <br>
 			<input type="submit" id="submit" value="Modificar">
 		</form>
 	</div></div>
