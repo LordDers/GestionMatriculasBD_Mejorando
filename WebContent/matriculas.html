@@ -124,22 +124,24 @@
 
 	<!--boton borrar -->
 	<fieldset>
-		<legend> Dar de baja profesor </legend>
+		<legend> Dar de baja matricula </legend>
 	<div class="divspoiler">
-		<input type="button" value="Dar de baja profesor" onclick="
+		<input type="button" value="Dar de baja matricula" onclick="
 			if (this.parentNode.nextSibling.childNodes[0].style.display != '') { 
 				this.parentNode.nextSibling.childNodes[0].style.display = ''; 
-				this.value = 'Ocultar dar de baja profesor'; 
+				this.value = 'Ocultar dar de baja matricula'; 
 			} else { 
 				this.parentNode.nextSibling.childNodes[0].style.display = 'none'; 
-				this.value = 'Dar de baja profesor'; 
+				this.value = 'Dar de baja matricula'; 
 			}
 		">
 	</div><div><div class="spoiler" style="display: none;">
-		<form name="baja_profesor" method="post" onsubmit="return validacion_baja_alumno()" action="Borrar_Profesor"> 
-			<input name="gestion" hidden="true" type="text"  value="baja_profesor"/> <br>
-			<label> DNI del profesor a dar de baja: </label> 
-				<input name="dniProfesor" type="text"  placeholder="8 numero y una letras"/>
+		<form name="baja_matricula" method="post" onsubmit="return validacion_baja_alumno()" action="Borrar_Matricula"> 
+			<input name="gestion" hidden="true" type="text"  value="baja_matricula"/> <br>
+			<label> DNI del alumno: </label> 
+				<input name="dniMatricula" type="text"  placeholder="8 numero y una letras"/> <br>
+			<label> Asignatura: </label> 
+				<input name="asignatura" type="text"  placeholder="Nombre de la asignatura"/> <br>
 			<input type="submit" id="submit" value="Borrar">
 		</form>
 	</div></div>

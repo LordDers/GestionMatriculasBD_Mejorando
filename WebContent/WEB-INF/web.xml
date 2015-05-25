@@ -239,4 +239,14 @@
     <servlet-name>Buscar_Matricula</servlet-name>
     <url-pattern>/Buscar_Matricula</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Borrar_Matricula</display-name>
+    <servlet-name>Borrar_Matricula</servlet-name>
+    <servlet-class>Borrar_Matricula</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Borrar_Matricula</servlet-name>
+    <url-pattern>/Borrar_Matricula</url-pattern>
+  </servlet-mapping>
 </web-app>
