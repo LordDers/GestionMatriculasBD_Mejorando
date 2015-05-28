@@ -72,12 +72,12 @@ public class Anyadir_Profesor extends HttpServlet {
 			String sqlPersona;
 			String sqlProfesor;
 			
-			System.out.println("INSERT INTO persona VALUES (\""+
+			System.out.println("INSERT INTO personas VALUES (\""+
 					nuevoProfesor.getDni()+"\",\""+
 					nuevoProfesor.getNombre()+"\",\""+
 					nuevoProfesor.getApellido()+"\")");
 			
-			sqlPersona="INSERT INTO persona VALUES (\""+
+			sqlPersona="INSERT INTO personas VALUES (\""+
 					nuevoProfesor.getDni()+"\",\""+
 					nuevoProfesor.getNombre()+"\",\""+
 					nuevoProfesor.getApellido()+"\")";
