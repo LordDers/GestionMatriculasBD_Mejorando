@@ -1,7 +1,7 @@
 create database matriculasBD2;
 use matriculasBD2;
 
-CREATE TABLE IF NOT EXISTS persona
+CREATE TABLE IF NOT EXISTS personas
 (dni varchar(9) NOT NULL,
 nombre VARCHAR(20) NOT NULL,
 apellido VARCHAR(25),
