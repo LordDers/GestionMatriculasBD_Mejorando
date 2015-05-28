@@ -67,7 +67,7 @@ public class Anyadir_Persona extends HttpServlet {
 			
 			String sql;
 			
-			System.out.println("INSERT INTO persona VALUES (\""+
+			System.out.println("INSERT INTO personas VALUES (\""+
 					dni+"\",\""+
 					nombre+"\",\""+
 					apellido+"\")");
