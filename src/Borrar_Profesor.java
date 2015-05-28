@@ -64,7 +64,7 @@ public class Borrar_Profesor extends HttpServlet {
 			
 			String sql;		    
 			System.out.println("Referencia: " + profesor.getDni());
-			sql="SELECT persona.dni, persona.nombre, persona.apellido, profesores.titulacion, profesores.departamento FROM persona INNER JOIN profesores ON persona.dni = profesores.dni WHERE persona.dni=\""+profesor.getDni()+"\"";
+			sql="SELECT personas.dni, personas.nombre, personas.apellido, profesores.titulacion, profesores.departamento FROM personas INNER JOIN profesores ON personas.dni = profesores.dni WHERE personas.dni=\""+profesor.getDni()+"\"";
 			
 			ResultSet buscar = sentencia.executeQuery(sql);
 			int cont = 0;
@@ -85,10 +85,10 @@ public class Borrar_Profesor extends HttpServlet {
 						con = DriverManager.getConnection(URL_BD,USUARIO,CONTRA);			        
 						sentencia = con.createStatement();
 
-						System.out.println("DELETE FROM persona where dni=\""+profesor.getDni()+"\"");
+						System.out.println("DELETE FROM personas where dni=\""+profesor.getDni()+"\"");
 						System.out.println("DELETE FROM profesores where dni=\""+profesor.getDni()+"\"");
 						
-						sqlDelete="DELETE FROM persona where dni=\""+profesor.getDni()+"\"";
+						sqlDelete="DELETE FROM personas where dni=\""+profesor.getDni()+"\"";
 						String sqlProfesor="DELETE FROM profesores where dni=\""+profesor.getDni()+"\"";
 						
 						int borrarProfesor = sentencia.executeUpdate(sqlProfesor);
