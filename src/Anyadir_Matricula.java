@@ -75,7 +75,7 @@ public class Anyadir_Matricula extends HttpServlet {
 			
 			sentencia = con.createStatement();
 			
-			String sqlSelect = "SELECT alumnos.dni, persona.nombre, persona.apellido, alumnos.anyo_inscripcion, alumnos.ciclo FROM persona INNER JOIN alumnos ON persona.dni = alumnos.dni WHERE persona.dni=\""+dniAlumno+"\"";
+			String sqlSelect = "SELECT alumnos.dni, personas.nombre, personas.apellido, alumnos.anyo_inscripcion, alumnos.ciclo FROM personas INNER JOIN alumnos ON personas.dni = alumnos.dni WHERE personas.dni=\""+dniAlumno+"\"";
 			ResultSet buscar = sentencia.executeQuery(sqlSelect);
 			
 			int contAlumno = 0;
@@ -101,9 +101,9 @@ public class Anyadir_Matricula extends HttpServlet {
 				
 				sentenciaAsignatura = con.createStatement();
 				
-				String sqlSelectAsignatura = "SELECT asignaturas.id_asignatura, asignaturas.nombre AS 'asignatura', asignaturas.creditos, profesores.dni, persona.nombre AS 'profesor', persona.apellido "+
+				String sqlSelectAsignatura = "SELECT asignaturas.id_asignatura, asignaturas.nombre AS 'asignatura', asignaturas.creditos, profesores.dni, personas.nombre AS 'profesor', personas.apellido "+
 						"FROM (asignaturas INNER JOIN profesores ON asignaturas.dni_profesor = profesores.dni) "+
-						"INNER JOIN persona ON profesores.dni = persona.dni "+
+						"INNER JOIN personas ON profesores.dni = personas.dni "+
 						"WHERE asignaturas.nombre=\""+asignatura+"\"";
 				System.out.println(sqlSelectAsignatura);
 				ResultSet buscarAsignatura = sentenciaAsignatura.executeQuery(sqlSelectAsignatura);
