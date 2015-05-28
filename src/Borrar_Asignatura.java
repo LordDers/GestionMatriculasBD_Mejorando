@@ -65,8 +65,8 @@ public class Borrar_Asignatura extends HttpServlet {
 			
 			String sql;		    
 			System.out.println("Referencia: " + asignatura.getNombre());
-			sql="SELECT profesores.dni, persona.nombre AS 'profesor', persona.apellido, profesores.titulacion, profesores.departamento, asignaturas.nombre AS 'asignatura', asignaturas.creditos "+
-					"FROM (persona INNER JOIN profesores ON persona.dni = profesores.dni) "+
+			sql="SELECT profesores.dni, personas.nombre AS 'profesor', personas.apellido, profesores.titulacion, profesores.departamento, asignaturas.nombre AS 'asignatura', asignaturas.creditos "+
+					"FROM (personas INNER JOIN profesores ON personas.dni = profesores.dni) "+
 					"INNER JOIN asignaturas ON profesores.dni = asignaturas.dni_profesor "+
 					"WHERE asignaturas.nombre=\""+asignatura.getNombre()+"\"";
 			
