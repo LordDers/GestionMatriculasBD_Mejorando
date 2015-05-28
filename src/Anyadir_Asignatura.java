@@ -70,7 +70,7 @@ public class Anyadir_Asignatura extends HttpServlet {
 			sentencia = con.createStatement();
 			sentenciaSelect = con.createStatement();
 			
-			String sqlSelect = "SELECT profesores.dni, persona.nombre, persona.apellido, profesores.titulacion, profesores.departamento FROM persona INNER JOIN profesores ON persona.dni = profesores.dni WHERE persona.dni=\""+dni+"\"";
+			String sqlSelect = "SELECT profesores.dni, personas.nombre, personas.apellido, profesores.titulacion, profesores.departamento FROM personas INNER JOIN profesores ON personas.dni = profesores.dni WHERE personas.dni=\""+dni+"\"";
 			ResultSet buscar = sentenciaSelect.executeQuery(sqlSelect);
 			
 			int cont = 0;
