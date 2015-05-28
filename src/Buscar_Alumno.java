@@ -65,7 +65,7 @@ public class Buscar_Alumno extends HttpServlet {
 			String sql;		    
 			System.out.println("Referencia: " + referencia);
 			
-			sql="SELECT persona.dni, persona.nombre, persona.apellido, alumnos.ciclo, alumnos.anyo_inscripcion FROM persona INNER JOIN alumnos ON persona.dni = alumnos.dni WHERE persona.dni=\""+referencia+"\"";
+			sql="SELECT personas.dni, personas.nombre, personas.apellido, alumnos.ciclo, alumnos.anyo_inscripcion FROM personas INNER JOIN alumnos ON personas.dni = alumnos.dni WHERE personas.dni=\""+referencia+"\"";
 			System.out.println("Sql: "+sql);			
 			
 			ResultSet buscar = sentencia.executeQuery(sql);
