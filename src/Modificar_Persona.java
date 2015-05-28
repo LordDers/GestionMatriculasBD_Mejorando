@@ -74,7 +74,7 @@ public class Modificar_Persona extends HttpServlet {
 			String sql;		    
 			System.out.println("Referencia: " + dni);
 			
-			sql="SELECT * FROM persona WHERE dni=\""+dni+"\"";
+			sql="SELECT * FROM personas WHERE dni=\""+dni+"\"";
 			
 			ResultSet buscar = sentencia.executeQuery(sql);
 			int cont = 0;
@@ -98,7 +98,7 @@ public class Modificar_Persona extends HttpServlet {
 						// Actualizar alumno
 						sentenciaAlumno = con.createStatement();
 
-						String sqlSelectAlumno="SELECT persona.dni, persona.nombre, persona.apellido, alumnos.ciclo, alumnos.anyo_inscripcion FROM persona INNER JOIN alumnos ON persona.dni = alumnos.dni WHERE persona.dni=\""+dni+"\"";
+						String sqlSelectAlumno="SELECT personas.dni, personas.nombre, personas.apellido, alumnos.ciclo, alumnos.anyo_inscripcion FROM personas INNER JOIN alumnos ON personas.dni = alumnos.dni WHERE personas.dni=\""+dni+"\"";
 						ResultSet mostrarAlumno = sentenciaAlumno.executeQuery(sqlSelectAlumno);
 						
 						String cambiosPersona="";
