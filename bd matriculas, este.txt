@@ -59,4 +59,4 @@ INSERT INTO profesores (dni, titulacion, departamento) VALUES ("12345678b", "Si"
 
 INSERT INTO asignaturas (id_asignatura, nombre, creditos, dni_profesor) VALUES ("1", "Programacion", 4, "12345678b");
 
-INSERT INTO matriculas (dni_alumno, id_asignatura, anyo_inscripcion, precio) VALUES ("12345678a", 1, 2015, 20.0);
+INSERT INTO matriculas (dni_alumno, id_asignatura, anyo_matriculacion, precio) VALUES ("12345678a", 1, 2015, 20.0);
