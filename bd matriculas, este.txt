@@ -35,10 +35,10 @@ PRIMARY KEY (dni_alumno, id_asignatura));
 
 
 ALTER TABLE alumnos
-add foreign key (dni) references persona(dni) on delete restrict on update cascade;
+add foreign key (dni) references personas(dni) on delete restrict on update cascade;
 
 ALTER TABLE profesores
-add foreign key (dni) references persona(dni) on delete restrict on update cascade;
+add foreign key (dni) references personas(dni) on delete restrict on update cascade;
 
 ALTER TABLE asignaturas
 add foreign key (dni_profesor) references profesores(dni) on delete restrict on update cascade;
