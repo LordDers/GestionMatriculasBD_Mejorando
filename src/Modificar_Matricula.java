@@ -76,9 +76,9 @@ public class Modificar_Matricula extends HttpServlet {
 			System.out.println("Referencia alumno: " + alumno.getDni());
 			System.out.println("Referencia asignatura: " + matricula.getNombre());
 			
-			sql = "SELECT matriculas.dni_alumno, matriculas.id_asignatura, persona.nombre AS 'alumno', persona.apellido, asignaturas.nombre AS 'asignatura' "+
+			sql = "SELECT matriculas.dni_alumno, matriculas.id_asignatura, personas.nombre AS 'alumno', personas.apellido, asignaturas.nombre AS 'asignatura' "+
 					"FROM matriculas INNER JOIN alumnos ON matriculas.dni_alumno = alumnos.dni "+
-					"INNER JOIN persona ON alumnos.dni = persona.dni "+
+					"INNER JOIN personas ON alumnos.dni = personas.dni "+
 					"INNER JOIN asignaturas ON matriculas.id_asignatura = asignaturas.id_asignatura "+
 					"WHERE matriculas.dni_alumno = \""+alumno.getDni()+"\" AND asignaturas.nombre = \""+matricula.getNombre()+"\"";
 			
@@ -182,9 +182,9 @@ public class Modificar_Matricula extends HttpServlet {
 			String sql;		    
 			System.out.println("Referencia alumno: " + alumno.getDni());
 			System.out.println("Referencia asignatura: " + matricula.getNombre());
-			sql="SELECT matriculas.dni_alumno, matriculas.id_asignatura, matriculas.anyo_matriculacion, matriculas.precio, persona.nombre AS 'alumno', persona.apellido, asignaturas.nombre AS 'asignatura' "+
+			sql="SELECT matriculas.dni_alumno, matriculas.id_asignatura, matriculas.anyo_matriculacion, matriculas.precio, personas.nombre AS 'alumno', personas.apellido, asignaturas.nombre AS 'asignatura' "+
 					"FROM matriculas INNER JOIN alumnos ON matriculas.dni_alumno = alumnos.dni "+
-					"INNER JOIN persona ON alumnos.dni = persona.dni "+
+					"INNER JOIN personas ON alumnos.dni = personas.dni "+
 					"INNER JOIN asignaturas ON matriculas.id_asignatura = asignaturas.id_asignatura "+
 					"WHERE matriculas.dni_alumno = \""+alumno.getDni()+"\" AND asignaturas.nombre = \""+matricula.getNombre()+"\"";
 			ResultSet buscar = sentencia.executeQuery(sql);
