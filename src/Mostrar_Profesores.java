@@ -62,7 +62,7 @@ public class Mostrar_Profesores extends HttpServlet {
 			sentencia = con.createStatement();
 
 			String sql;		        
-			sql="SELECT persona.dni, persona.nombre, persona.apellido, profesores.titulacion, profesores.departamento FROM persona INNER JOIN profesores ON persona.dni = profesores.dni";
+			sql="SELECT personas.dni, personas.nombre, personas.apellido, profesores.titulacion, profesores.departamento FROM personas INNER JOIN profesores ON personas.dni = profesores.dni";
 			ResultSet mostrar = sentencia.executeQuery(sql);
 			
 			System.out.println("Pre while");

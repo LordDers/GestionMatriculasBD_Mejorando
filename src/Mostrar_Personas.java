@@ -62,7 +62,7 @@ public class Mostrar_Personas extends HttpServlet {
 			sentencia = con.createStatement();
 
 			String sql;		        
-			sql="SELECT * FROM persona";
+			sql="SELECT * FROM personas";
 			
 			ResultSet mostrar = sentencia.executeQuery(sql);
 			

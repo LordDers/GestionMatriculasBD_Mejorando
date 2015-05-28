@@ -64,9 +64,9 @@ public class Mostrar_Matriculas extends HttpServlet {
 			sentencia = con.createStatement();
 
 			String sql;			
-			sql = "SELECT matriculas.anyo_matriculacion, matriculas.precio, alumnos.ciclo, persona.nombre AS 'alumno', persona.apellido, asignaturas.nombre AS 'asignatura', profesores.dni AS 'profesor' "+
+			sql = "SELECT matriculas.anyo_matriculacion, matriculas.precio, alumnos.ciclo, personas.nombre AS 'alumno', personas.apellido, asignaturas.nombre AS 'asignatura', profesores.dni AS 'profesor' "+
 				"FROM (matriculas INNER JOIN alumnos ON matriculas.dni_alumno = alumnos.dni) "+
-				"INNER JOIN persona ON alumnos.dni = persona.dni "+
+				"INNER JOIN personas ON alumnos.dni = personas.dni "+
 				"INNER JOIN asignaturas ON matriculas.id_asignatura = asignaturas.id_asignatura "+
 				"INNER JOIN profesores ON asignaturas.dni_profesor = profesores.dni";
 			System.out.println(sql);

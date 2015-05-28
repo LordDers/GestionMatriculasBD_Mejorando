@@ -68,7 +68,7 @@ public class Modificar_Profesor extends HttpServlet {
 			String sql;		    
 			System.out.println("Referencia: " + profesor.getDni());
 			
-			sql="SELECT persona.dni, persona.nombre, persona.apellido, profesores.titulacion, profesores.departamento FROM persona INNER JOIN profesores ON persona.dni = profesores.dni WHERE persona.dni=\""+profesor.getDni()+"\"";
+			sql="SELECT personas.dni, personas.nombre, personas.apellido, profesores.titulacion, profesores.departamento FROM personas INNER JOIN profesores ON personas.dni = profesores.dni WHERE personas.dni=\""+profesor.getDni()+"\"";
 			
 			ResultSet buscar = sentencia.executeQuery(sql);
 			int cont = 0;
@@ -104,11 +104,11 @@ public class Modificar_Profesor extends HttpServlet {
 						con = DriverManager.getConnection(URL_BD,USUARIO,CONTRA);			        
 						sentencia = con.createStatement();
 						
-						System.out.println("UPDATE persona SET "+cambiosPersona+" WHERE dni=\""+profesor.getDni()+"\"");
+						System.out.println("UPDATE personas SET "+cambiosPersona+" WHERE dni=\""+profesor.getDni()+"\"");
 						System.out.println("UPDATE profesores SET "+cambiosProfesor+" WHERE dni=\""+profesor.getDni()+"\"");
 						
 						String sqlUpdate;
-						sqlUpdate="UPDATE persona SET "+cambiosPersona+" WHERE dni=\""+profesor.getDni()+"\"";
+						sqlUpdate="UPDATE personas SET "+cambiosPersona+" WHERE dni=\""+profesor.getDni()+"\"";
 						String sqlProfesor="UPDATE profesores SET "+cambiosProfesor+" WHERE dni=\""+profesor.getDni()+"\"";
 						
 						int updateProfesor = sentencia.executeUpdate(sqlProfesor);
@@ -174,7 +174,7 @@ public class Modificar_Profesor extends HttpServlet {
 			String sql;		    
 			System.out.println("Referencia: "+referencia);		     
 			//sql="SELECT matricula, marca FROM coches WHERE matricula='"+referencia+"'";
-			sql="SELECT persona.dni, persona.nombre, persona.apellido, profesores.titulacion, profesores.departamento FROM persona INNER JOIN profesores ON persona.dni = profesores.dni WHERE persona.dni=\""+referencia+"\"";
+			sql="SELECT personas.dni, personas.nombre, personas.apellido, profesores.titulacion, profesores.departamento FROM personas INNER JOIN profesores ON personas.dni = profesores.dni WHERE personas.dni=\""+referencia+"\"";
 			ResultSet buscar = sentencia.executeQuery(sql);
 
 			Profesor profesor = new Profesor("", "", "", "", "");
