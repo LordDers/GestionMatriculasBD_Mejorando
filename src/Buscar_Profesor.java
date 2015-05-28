@@ -67,7 +67,7 @@ public class Buscar_Profesor extends HttpServlet {
 			String sql;		    
 			System.out.println("Referencia: " + referencia);
 			
-			sql="SELECT persona.dni, persona.nombre, persona.apellido, profesores.titulacion, profesores.departamento FROM persona INNER JOIN profesores ON persona.dni = profesores.dni WHERE persona.dni=\""+referencia+"\"";
+			sql="SELECT personas.dni, personas.nombre, personas.apellido, profesores.titulacion, profesores.departamento FROM personas INNER JOIN profesores ON personas.dni = profesores.dni WHERE personas.dni=\""+referencia+"\"";
 			System.out.println("Sql: "+sql);			
 			
 			ResultSet buscar = sentencia.executeQuery(sql);
