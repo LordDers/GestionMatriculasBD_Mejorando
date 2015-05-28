@@ -66,7 +66,7 @@ public class Modificar_Alumno extends HttpServlet {
 			String sql;		    
 			System.out.println("Referencia: " + alumno.getDni());
 			
-			sql="SELECT persona.dni, persona.nombre, persona.apellido, alumnos.ciclo, alumnos.anyo_inscripcion FROM persona INNER JOIN alumnos ON persona.dni = alumnos.dni WHERE persona.dni=\""+alumno.getDni()+"\"";
+			sql="SELECT personas.dni, personas.nombre, personas.apellido, alumnos.ciclo, alumnos.anyo_inscripcion FROM personas INNER JOIN alumnos ON personas.dni = alumnos.dni WHERE personas.dni=\""+alumno.getDni()+"\"";
 			
 			ResultSet buscar = sentencia.executeQuery(sql);
 			int cont = 0;
@@ -102,11 +102,11 @@ public class Modificar_Alumno extends HttpServlet {
 						con = DriverManager.getConnection(URL_BD,USUARIO,CONTRA);			        
 						sentencia = con.createStatement();
 						
-						System.out.println("UPDATE persona SET "+cambiosPersona+" WHERE dni=\""+alumno.getDni()+"\"");
+						System.out.println("UPDATE personas SET "+cambiosPersona+" WHERE dni=\""+alumno.getDni()+"\"");
 						System.out.println("UPDATE alumnos SET "+cambiosAlumno+" WHERE dni=\""+alumno.getDni()+"\"");
 						
 						String sqlUpdate;
-						sqlUpdate="UPDATE persona SET "+cambiosPersona+" WHERE dni=\""+alumno.getDni()+"\"";
+						sqlUpdate="UPDATE personas SET "+cambiosPersona+" WHERE dni=\""+alumno.getDni()+"\"";
 						String sqlAlumno="UPDATE alumnos SET "+cambiosAlumno+" WHERE dni=\""+alumno.getDni()+"\"";
 						
 						int updateAlumno = sentencia.executeUpdate(sqlAlumno);
@@ -171,7 +171,7 @@ public class Modificar_Alumno extends HttpServlet {
 			
 			String sql;		    
 			System.out.println("Referencia: "+referencia);
-			sql="SELECT persona.dni, persona.nombre, persona.apellido, alumnos.ciclo, alumnos.anyo_inscripcion FROM persona INNER JOIN alumnos ON persona.dni = alumnos.dni WHERE persona.dni=\""+referencia+"\"";
+			sql="SELECT personas.dni, personas.nombre, personas.apellido, alumnos.ciclo, alumnos.anyo_inscripcion FROM personas INNER JOIN alumnos ON personas.dni = alumnos.dni WHERE personas.dni=\""+referencia+"\"";
 			ResultSet buscar = sentencia.executeQuery(sql);
 
 			Alumno alumno = new Alumno("", "", "", 0, "");
