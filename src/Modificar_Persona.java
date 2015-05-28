@@ -139,10 +139,10 @@ public class Modificar_Persona extends HttpServlet {
 							System.out.println("Apellido: " + alumnoEncontrado.getApellido());
 							System.out.println("Ciclo: " + alumnoEncontrado.getCiclo());
 							
-							System.out.println("UPDATE persona SET "+cambiosPersona+" WHERE dni=\""+persona.getDni()+"\"");
+							System.out.println("UPDATE personas SET "+cambiosPersona+" WHERE dni=\""+persona.getDni()+"\"");
 							System.out.println("UPDATE alumnos SET "+cambiosAlumno+" WHERE dni=\""+alumno.getDni()+"\"");
 							
-							sqlUpdate="UPDATE persona SET "+cambiosPersona+" WHERE dni=\""+persona.getDni()+"\"";
+							sqlUpdate="UPDATE personas SET "+cambiosPersona+" WHERE dni=\""+persona.getDni()+"\"";
 							String sqlAlumno="UPDATE alumnos SET "+cambiosAlumno+" WHERE dni=\""+alumno.getDni()+"\"";
 							
 							int updateAlumno = sentencia.executeUpdate(sqlAlumno);
@@ -161,7 +161,7 @@ public class Modificar_Persona extends HttpServlet {
 						// Actualizar profesor
 						sentenciaProfesor = con.createStatement();
 
-						String sqlSelectProfesor="SELECT persona.dni, persona.nombre, persona.apellido, profesores.titulacion, profesores.departamento FROM persona INNER JOIN profesores ON persona.dni = profesores.dni WHERE persona.dni=\""+dni+"\"";
+						String sqlSelectProfesor="SELECT personas.dni, personas.nombre, personas.apellido, profesores.titulacion, profesores.departamento FROM personas INNER JOIN profesores ON personas.dni = profesores.dni WHERE personas.dni=\""+dni+"\"";
 						ResultSet mostrarProfesor = sentenciaProfesor.executeQuery(sqlSelectProfesor);
 						
 						String titulacion = null;
@@ -196,10 +196,10 @@ public class Modificar_Persona extends HttpServlet {
 							System.out.println("Apellido: " + profesorEncontrado.getApellido());
 							System.out.println("Departamento: " + profesorEncontrado.getDepartamento());
 							
-							System.out.println("UPDATE persona SET "+cambiosPersona+" WHERE dni=\""+persona.getDni()+"\"");
+							System.out.println("UPDATE personas SET "+cambiosPersona+" WHERE dni=\""+persona.getDni()+"\"");
 							System.out.println("UPDATE profesores SET "+cambiosProfesor+" WHERE dni=\""+profesor.getDni()+"\"");
 							
-							sqlUpdate="UPDATE persona SET "+cambiosPersona+" WHERE dni=\""+persona.getDni()+"\"";
+							sqlUpdate="UPDATE personas SET "+cambiosPersona+" WHERE dni=\""+persona.getDni()+"\"";
 							String sqlProfesor="UPDATE profesores SET "+cambiosProfesor+" WHERE dni=\""+profesor.getDni()+"\"";
 							
 							int updateProfesor = sentencia.executeUpdate(sqlProfesor);
@@ -271,10 +271,10 @@ public class Modificar_Persona extends HttpServlet {
 			System.out.println("Referencia: "+referencia);
 			/*sql="SELECT * FROM alumnos WHERE dni=\""+referencia+"\"";
 			ResultSet buscar = sentencia.executeQuery(sql);*/
-			sql="SELECT persona.dni, persona.nombre, persona.apellido, alumnos.ciclo, alumnos.anyo_inscripcion FROM persona INNER JOIN alumnos ON persona.dni = alumnos.dni WHERE persona.dni=\""+referencia+"\"";
+			sql="SELECT personas.dni, personas.nombre, personas.apellido, alumnos.ciclo, alumnos.anyo_inscripcion FROM personas INNER JOIN alumnos ON personas.dni = alumnos.dni WHERE personas.dni=\""+referencia+"\"";
 			ResultSet buscarAlumno = sentenciaAlumno.executeQuery(sql);
 			
-			sql="SELECT persona.dni, persona.nombre, persona.apellido, profesores.titulacion, profesores.departamento FROM persona INNER JOIN profesores ON persona.dni = profesores.dni WHERE persona.dni=\""+referencia+"\"";
+			sql="SELECT personas.dni, personas.nombre, personas.apellido, profesores.titulacion, profesores.departamento FROM personas INNER JOIN profesores ON personas.dni = profesores.dni WHERE personas.dni=\""+referencia+"\"";
 			ResultSet buscarProfesor = sentenciaProfesor.executeQuery(sql);
 			
 			String dni = null;
